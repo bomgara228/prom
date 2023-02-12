@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* let prom = new Promise(function(resolve, reject){
+            let arr = [
+                ok = 1,
+                a = Math.trunc(Math.random() * 999999 + 1)
+            ]
+            resolve(arr);
+        });
+        prom.then(arr => {
+            if (arr[0] == arr[1]) {
+                console.log(arr[1]);
+            }
+            if (arr[0] <= 10){
+                arr[0]++;
+            }
+        }) */
+
+        function generateNum(){
+            return  Math.trunc(Math.random() * 999999 + 1);
+        }
+
+        async function getNumber(num){
+            let number;
+            do {
+                number  = await generateNum();
+            } while(number != num);
+            return number;
+        }
+
+        async function createNumber(num){
+            let val = await getNumber(num);
+            console.log(val);
+        }
+
+        async function appStart(count){
+            for(let i = 1; i<= count; i++){
+                await createNumber(i);
+            }
+        }
+
+        appStart(10);
+
+        console.log('Все норм');
+    </script>
+</body>
+</html>
